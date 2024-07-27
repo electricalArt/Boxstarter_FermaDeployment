@@ -58,6 +58,7 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
+    winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
@@ -65,6 +66,11 @@ function InstallPackagesWithWinget()
         #	Parsec.Parsec `
 }
 #InstallPackagesWithWinget
+function InstallPackagesWithChoco()
+{
+    #choco install --confirm --id ****
+}
+InstallPackagesWithChoco
 
 function InstallPowershellModules()
 {

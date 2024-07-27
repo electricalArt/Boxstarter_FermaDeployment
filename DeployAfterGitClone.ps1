@@ -43,7 +43,7 @@ New-SymbolicLink -Path "~\ArtHome\_vimrc" -Target "C:/Users/musli/ArtHome/.vimrc
 New-Item -Type "Directory" -Path "$env:APPDATA\Code\User\" -Force
 New-SymbolicLink -Path "$env:APPDATA\Code\User\settings.json" -Target "C:/Users/musli/ArtHome/.config/Code/User/settings.json"
 
-# XMBC (trackball mouse utility)
+# XMouseButtonControl (trackball mouse utility)
 New-Item -Type "Directory" -Path "$env:APPDATA\Highresolution Enterprises\XMouseButtonControl\" -Force
 New-SymbolicLink `
     -Path "$env:APPDATA/Highresolution Enterprises/XMouseButtonControl/musli''s XMBC Profile.xmbcp" `
