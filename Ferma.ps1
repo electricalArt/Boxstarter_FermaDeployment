@@ -62,7 +62,7 @@ function InstallPackagesWithWinget()
         #	Parsec.Parsec `
 }
 
-InstallPackagesWithWinget()
+InstallPackagesWithWinget
 
 
 Set-WindowsExplorerOptions `
