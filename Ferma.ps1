@@ -68,6 +68,9 @@ Set-BoxstarterTaskbarOptions -Dock "Top"
 Set-BoxstarterTaskbarOptions -MultiMonitorOn 
 Set-BoxstarterTaskbarOptions -DisableSearchBox 
 
+Disable-GameBarTips
+Disable-BingSearch
+
 Install-WindowsUpdate `
     -AcceptEula
     
