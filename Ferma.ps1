@@ -59,6 +59,7 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
+    winget install --accept-package-agreements --accept-source-agreements --id Google.GoogleDrive
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `

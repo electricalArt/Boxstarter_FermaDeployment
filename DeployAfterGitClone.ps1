@@ -37,7 +37,7 @@ New-SymbolicLink -Path "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8we
 New-SymbolicLink -Path "$env:APPDATA\alacritty" -Target "$env:HOMEPATH\ArtHome\.config\alacritty\"
 
 # Vim
-New-SymbolicLink -Path "~\ArtHome\_vimrc" -Target "C:/Users/musli/ArtHome/.vimrc"`
+New-SymbolicLink -Path "$env:HOMEPATH\_vimrc" -Target "C:/Users/musli/ArtHome/.vimrc"`
 
 # MS Visual Studio Code
 New-Item -Type "Directory" -Path "$env:APPDATA\Code\User\" -Force
@@ -62,3 +62,7 @@ catch
     Move-Item $env:TEMP\saved\ $Startup
 }
 
+# Manual configuration:
+#   GoogleDrive
+#       You don't need to create symlink manually. Git stores that symlink.
+#   Yandex.Music
