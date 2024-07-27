@@ -56,14 +56,35 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.DotNet.SDK.8
     winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
+    #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
-
 InstallPackagesWithWinget
 
+function InstallPowershellModules()
+{
+    Install-Module -Name PSTree
+    Install-Module -Name MagicPacket
+    Install-Module -Name Recycle
+}
+
+##  Remapping `Capslock` to `Ctrl`. After that you need sign out and sign in.
+.\15-capslock_to_ctrl.reg
+
+function ChangeEnvironmentVariables()
+{
+    # Should be tested
+    if ($env:Path.Contains("vim") == $false)
+    {
+        [Environment]::SetEnvironmentVariable("PATH", $env.PATH + ";C:\Program Files\Vim\vim91\", "Machine")
+    }
+}
+
+ChangeEnvironmentVariables
 
 <#
 Set-WindowsExplorerOptions `
