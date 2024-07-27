@@ -32,7 +32,7 @@ choco install `
 #>
 
 # Use choco as default package manager (it has abitliy to specify packages installation directory
-winget install --silent `
+winget install --accept-package-agreements --accept-source-agreements --id `
 	Vim.Vim `
 	Alacritty.Alacritty `
 	Microsoft.WindowsTerminal `
