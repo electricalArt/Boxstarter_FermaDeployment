@@ -34,30 +34,30 @@ choco install `
     discord `
 #>
 
-# Use choco as default package manager (it has abitliy to specify packages installation directory
 function InstallPackagesWithWinget()
 {
-    winget install --accept-package-agreements --accept-source-agreements --id `
-    	Vim.Vim `
-    	Alacritty.Alacritty `
-    	Microsoft.WindowsTerminal `
-    	Microsoft.Powershell `
-    	Gerardog.Gsudo `
-    	Git.Git `
-    	RARLab.WinRAR `
-    	AnydeskSoftwareGmbH.AnyDesk `
-    	Microsoft.VisualStudioCode `
-    	qBittorrent.qBittorrent `
-    	Guru3D.Afterburner `
-    	Discord.Discord `
-    	Yandex.Music `
-    	Brave.Brave `
-    	VideoLAN.VLC `
-        Python.Python.3.12 `
-        Microsoft.DotNet.SDK.8 `
-        AutoHotkey.AutoHotkey `
+    # Use choco as default package manager (it has abitliy to specify packages installation directory
+    winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
+    winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
+    winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.WindowsTerminal
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.Powershell
+    winget install --accept-package-agreements --accept-source-agreements --id Git.Git
+    winget install --accept-package-agreements --accept-source-agreements --id RARLab.WinRAR
+    winget install --accept-package-agreements --accept-source-agreements --id AnydeskSoftwareGmbH.AnyDesk
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
+    winget install --accept-package-agreements --accept-source-agreements --id qBittorrent.qBittorrent
+    winget install --accept-package-agreements --accept-source-agreements --id Guru3D.Afterburner
+    winget install --accept-package-agreements --accept-source-agreements --id Discord.Discord
+    winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
+    winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
+    winget install --accept-package-agreements --accept-source-agreements --id VideoLAN.VLC
+    winget install --accept-package-agreements --accept-source-agreements --id Python.Python.3.12
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.DotNet.SDK.8
+    winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community
     	#### Apps that are not available
-        #	AIMP.AIMP `  
+        #	AIMP.AIMP `
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
@@ -65,6 +65,7 @@ function InstallPackagesWithWinget()
 InstallPackagesWithWinget
 
 
+<#
 Set-WindowsExplorerOptions `
     -EnableShowHiddenFilesFoldersDrives `
     -EnableShowProtectedOSFiles `
@@ -89,3 +90,5 @@ Install-WindowsUpdate `
     
 Disable-GameBarTips
 Disable-BingSearch
+
+#>
