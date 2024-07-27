@@ -27,6 +27,7 @@ Disable-GameBarTips
 Disable-BingSearch
 
 # Use `winget` as standard package manager
+choco install winget
 <#
 choco install `
     vim `
