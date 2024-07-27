@@ -35,29 +35,32 @@ choco install `
 #>
 
 # Use choco as default package manager (it has abitliy to specify packages installation directory
-winget install --accept-package-agreements --accept-source-agreements --id `
-	Vim.Vim `
-	Alacritty.Alacritty `
-	Microsoft.WindowsTerminal `
-	Microsoft.Powershell `
-	Gerardog.Gsudo `
-	Git.Git `
-	RARLab.WinRAR `
-	AnydeskSoftwareGmbH.AnyDesk `
-	Microsoft.VisualStudioCode `
-	qBittorrent.qBittorrent `
-	Guru3D.Afterburner `
-	Discord.Discord `
-	Yandex.Music `
-	Brave.Brave `
-	VideoLAN.VLC `
-    Python.Python.3.12 `
-    Microsoft.DotNet.SDK.8 `
-    AutoHotkey.AutoHotkey `
-	#### Apps that are not available
-#	AIMP.AIMP `  
-#	Foxit.FoxitReader `
-#	Parsec.Parsec `
+function InstallPackagesWithWinget()
+{
+    winget install --accept-package-agreements --accept-source-agreements --id `
+    	Vim.Vim `
+    	Alacritty.Alacritty `
+    	Microsoft.WindowsTerminal `
+    	Microsoft.Powershell `
+    	Gerardog.Gsudo `
+    	Git.Git `
+    	RARLab.WinRAR `
+    	AnydeskSoftwareGmbH.AnyDesk `
+    	Microsoft.VisualStudioCode `
+    	qBittorrent.qBittorrent `
+    	Guru3D.Afterburner `
+    	Discord.Discord `
+    	Yandex.Music `
+    	Brave.Brave `
+    	VideoLAN.VLC `
+        Python.Python.3.12 `
+        Microsoft.DotNet.SDK.8 `
+        AutoHotkey.AutoHotkey `
+    	#### Apps that are not available
+        #	AIMP.AIMP `  
+        #	Foxit.FoxitReader `
+        #	Parsec.Parsec `
+}
 
 
 Set-WindowsExplorerOptions `
