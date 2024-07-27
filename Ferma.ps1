@@ -62,6 +62,8 @@ function InstallPackagesWithWinget()
         #	Parsec.Parsec `
 }
 
+InstallPackagesWithWinget()
+
 
 Set-WindowsExplorerOptions `
     -EnableShowHiddenFilesFoldersDrives `
