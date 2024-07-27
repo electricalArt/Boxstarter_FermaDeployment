@@ -4,28 +4,6 @@ Write-BoxstarterMessage `
 Update-ExecutionPolicy `
     -policy "Unrestricted" `
 
-Set-WindowsExplorerOptions `
-    -EnableShowHiddenFilesFoldersDrives `
-    -EnableShowProtectedOSFiles `
-    -EnableShowFileExtensions `
-    -EnableShowFullPathInTitleBar `
-    -DisableOpenFileExplorerToQuickAccess `
-    -DisableShowRecentFilesInQuickAccess `
-    -DisableShowFrequentFoldersInQuickAccess `
-    -EnableShowRibbon `
-    -EnableSnapAssist `
-
-Install-WindowsUpdate `
-    -AcceptEula
-
-Set-BoxstarterTaskbarOptions -UnLock 
-Set-BoxstarterTaskbarOptions -Dock "Top"
-Set-BoxstarterTaskbarOptions -MultiMonitorOn 
-Set-BoxstarterTaskbarOptions -DisableSearchBox 
-
-Disable-GameBarTips
-Disable-BingSearch
-
 <#
 choco install winget
 $wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.23.1911.0_x64__8wekyb3d8bbwe\"
@@ -72,3 +50,26 @@ winget install --silent `
 #	AIMP.AIMP `  
 #	Foxit.FoxitReader `
 #	Parsec.Parsec `
+
+
+Set-WindowsExplorerOptions `
+    -EnableShowHiddenFilesFoldersDrives `
+    -EnableShowProtectedOSFiles `
+    -EnableShowFileExtensions `
+    -EnableShowFullPathInTitleBar `
+    -DisableOpenFileExplorerToQuickAccess `
+    -DisableShowRecentFilesInQuickAccess `
+    -DisableShowFrequentFoldersInQuickAccess `
+    -EnableShowRibbon `
+    -EnableSnapAssist `
+
+Set-BoxstarterTaskbarOptions -UnLock 
+Set-BoxstarterTaskbarOptions -Dock "Top"
+Set-BoxstarterTaskbarOptions -MultiMonitorOn 
+Set-BoxstarterTaskbarOptions -DisableSearchBox 
+
+Install-WindowsUpdate `
+    -AcceptEula
+    
+Disable-GameBarTips
+Disable-BingSearch
