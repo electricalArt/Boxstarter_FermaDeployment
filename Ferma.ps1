@@ -1,3 +1,4 @@
+<#
 Write-BoxstarterMessage `
     -message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
@@ -63,7 +64,7 @@ function InstallPackagesWithWinget()
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
-InstallPackagesWithWinget
+#InstallPackagesWithWinget
 
 function InstallPowershellModules()
 {
@@ -71,16 +72,16 @@ function InstallPowershellModules()
     Install-Module -Name MagicPacket
     Install-Module -Name Recycle
 }
-
-##  Remapping `Capslock` to `Ctrl`. After that you need sign out and sign in.
-.\15-capslock_to_ctrl.reg
+#>
 
 function ChangeEnvironmentVariables()
 {
+    $pathVariable = [Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
     # Should be tested
-    if ($env:Path.Contains("vim") == $false)
+    if ($pathVariable.Contains("vim") -eq $false)
     {
-        [Environment]::SetEnvironmentVariable("PATH", $env.PATH + ";C:\Program Files\Vim\vim91\", "Machine")
+        [Environment]::SetEnvironmentVariable("Path", ($pathVariable + ";C:\Program Files\Vim\vim91\"), [System.EnvironmentVariableTarget]::User)
+        Write-BoxstarterMessage "`Path` variable is changed"
     }
 }
 
