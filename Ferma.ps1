@@ -111,8 +111,15 @@ Set-BoxstarterTaskbarOptions -DisableSearchBox
 Disable-GameBarTips
 Disable-BingSearch
 
-Install-WindowsUpdate `
-    -AcceptEula
+try
+{
+    Install-WindowsUpdate `
+        -AcceptEula
+}
+catch 
+{
+    Write-Error $_
+}
     
 Disable-GameBarTips
 Disable-BingSearch
