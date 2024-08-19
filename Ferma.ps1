@@ -1,15 +1,24 @@
 Write-BoxstarterMessage `
-    -message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
+    -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
 Update-ExecutionPolicy `
-    -policy "Unrestricted" `
+    -Policy "Unrestricted" `
 
-<#
-choco install winget
-$wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.23.1911.0_x64__8wekyb3d8bbwe\"
-[System.Environment]::SetEnvironmentVariable("Path", $env:Path + $wingetPath, [System.EnvironmentVariableTarget]::Machine)
-#>
-if (Get-Command "wringet" -ErrorAction "SilentlyContinue")
+
+function InstallNewWinget()
+{
+    <#
+    choco install winget
+    $wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.23.1911.0_x64__8wekyb3d8bbwe\"
+    [System.Environment]::SetEnvironmentVariable("Path", $env:Path + $wingetPath, [System.EnvironmentVariableTarget]::Machine)
+    #>
+
+    Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
+    Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
+    del .\winget.msixbundle
+}
+#InstallNewWinget
+if (Get-Command "winget" -ErrorAction "SilentlyContinue")
 {
     $progressPreference = 'silentlyContinue'
     Write-Information "Downloading WinGet and its dependencies..."
@@ -20,19 +29,6 @@ if (Get-Command "wringet" -ErrorAction "SilentlyContinue")
     Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
     Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 }
-<#
-choco install `
-    vim `
-    microsoft-windows-terminal `
-    powershell-corePowerShell `
-    gsudo `
-    git `
-    winrar `
-    VisualStudioCode `
-    qbittorrent `
-    msiafterburner `
-    discord `
-#>
 
 function InstallPackagesWithWinget()
 {
@@ -66,8 +62,22 @@ function InstallPackagesWithWinget()
         #	Parsec.Parsec `
 }
 InstallPackagesWithWinget
+
 function InstallPackagesWithChoco()
 {
+    <#
+    choco install `
+        vim `
+        microsoft-windows-terminal `
+        powershell-corePowerShell `
+        gsudo `
+        git `
+        winrar `
+        VisualStudioCode `
+        qbittorrent `
+        msiafterburner `
+        discord `
+    #>
     #choco install --confirm --id ****
 }
 InstallPackagesWithChoco
