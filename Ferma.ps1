@@ -65,7 +65,7 @@ function InstallPackagesWithWinget()
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
-#InstallPackagesWithWinget
+InstallPackagesWithWinget
 function InstallPackagesWithChoco()
 {
     #choco install --confirm --id ****
@@ -78,7 +78,7 @@ function InstallPowershellModules()
     Install-Module -Name MagicPacket
     Install-Module -Name Recycle
 }
-#>
+InstallPowershellModules
 
 function ChangeEnvironmentVariables()
 {
@@ -90,7 +90,6 @@ function ChangeEnvironmentVariables()
         Write-BoxstarterMessage "`Path` variable is changed"
     }
 }
-
 ChangeEnvironmentVariables
 
 Set-WindowsExplorerOptions `
