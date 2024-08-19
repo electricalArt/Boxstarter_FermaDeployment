@@ -1,4 +1,3 @@
-<#
 Write-BoxstarterMessage `
     -message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
@@ -94,7 +93,6 @@ function ChangeEnvironmentVariables()
 
 ChangeEnvironmentVariables
 
-<#
 Set-WindowsExplorerOptions `
     -EnableShowHiddenFilesFoldersDrives `
     -EnableShowProtectedOSFiles `
@@ -120,4 +118,3 @@ Install-WindowsUpdate `
 Disable-GameBarTips
 Disable-BingSearch
 
-#>
