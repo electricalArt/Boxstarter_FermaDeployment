@@ -1,8 +1,10 @@
+<#
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
 Update-ExecutionPolicy `
     -Policy "Unrestricted" `
+#>
 
 
 function InstallNewWinget()
@@ -13,26 +15,27 @@ function InstallNewWinget()
     [System.Environment]::SetEnvironmentVariable("Path", $env:Path + $wingetPath, [System.EnvironmentVariableTarget]::Machine)
     #>
 
-    Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
-    Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
-    del .\winget.msixbundle
+    #Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
+    #Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
+    #Remove-Item .\winget.msixbundle
+
+    if (!(Get-Command "winget" -ErrorAction "SilentlyContinue"))
+    {
+        $progressPreference = 'silentlyContinue'
+        Write-Information "Downloading WinGet and its dependencies..."
+        Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+        Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
+        Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
+        Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
+        Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
+        Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+    }
 }
 #InstallNewWinget
-if (Get-Command "winget" -ErrorAction "SilentlyContinue")
-{
-    $progressPreference = 'silentlyContinue'
-    Write-Information "Downloading WinGet and its dependencies..."
-    Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-    Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
-    Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
-    Add-AppxPackage Microsoft.VCLibs.x64.14.00.Desktop.appx
-    Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
-    Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-}
 
 function InstallPackagesWithWinget()
 {
-    # Use choco as default package manager (it has abitliy to specify packages installation directory
+    # Environment
     winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
     winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
@@ -44,24 +47,24 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
     winget install --accept-package-agreements --accept-source-agreements --id qBittorrent.qBittorrent
     winget install --accept-package-agreements --accept-source-agreements --id Guru3D.Afterburner
+    winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
     winget install --accept-package-agreements --accept-source-agreements --id Discord.Discord
     winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
     winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
     winget install --accept-package-agreements --accept-source-agreements --id VideoLAN.VLC
     winget install --accept-package-agreements --accept-source-agreements --id Python.Python.3.12
-    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.DotNet.SDK.8
     winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
-    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     winget install --accept-package-agreements --accept-source-agreements --id Google.GoogleDrive
+    winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
-InstallPackagesWithWinget
+#InstallPackagesWithWinget
 
 function InstallPackagesWithChoco()
 {
@@ -80,7 +83,7 @@ function InstallPackagesWithChoco()
     #>
     #choco install --confirm --id ****
 }
-InstallPackagesWithChoco
+#InstallPackagesWithChoco
 
 function InstallPowershellModules()
 {
@@ -88,20 +91,28 @@ function InstallPowershellModules()
     Install-Module -Name MagicPacket
     Install-Module -Name Recycle
 }
-InstallPowershellModules
+#InstallPowershellModules
 
-function ChangeEnvironmentVariables()
+function ChangePathVariable()
 {
+    param(
+        [string]$NewEntity
+    )
     $pathVariable = [Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
-    # Should be tested
-    if ($pathVariable.Contains("vim") -eq $false)
+    if ($pathVariable.Contains($NewEntity) -eq $false)
     {
-        [Environment]::SetEnvironmentVariable("Path", ($pathVariable + ";C:\Program Files\Vim\vim91\"), [System.EnvironmentVariableTarget]::User)
+        [Environment]::SetEnvironmentVariable("Path", ($pathVariable + ";" + $NewEntity), [System.EnvironmentVariableTarget]::User)
         Write-BoxstarterMessage "`Path` variable is changed"
     }
 }
+function ChangeEnvironmentVariables()
+{
+    ChangePathVariable -NewEntity "C:\Program Files\Vim\vim91\"
+    ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\XMind_Pro_2023_23.05__x64__Ml_ru__Portable\XMind_Pro_2023_23.05__x64__Ml_ru__Portable"
+}
 ChangeEnvironmentVariables
 
+<#
 Set-WindowsExplorerOptions `
     -EnableShowHiddenFilesFoldersDrives `
     -EnableShowProtectedOSFiles `
@@ -130,7 +141,7 @@ catch
 {
     Write-Error $_
 }
-    
+
 Disable-GameBarTips
 Disable-BingSearch
-
+#>
