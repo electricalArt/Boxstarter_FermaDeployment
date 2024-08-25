@@ -76,6 +76,14 @@ function SetupStartupDirectory()
     }
 }
 
+function SetupVisualStudio()
+{
+    New-Item -Type "Directory" -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings" -Force
+    New-SymbolicLink `
+        -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings\CurrentSettings.vssettings" `
+        -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\VisualStudio.vssettings"
+}
+
 
 
 SetupGit
