@@ -83,7 +83,7 @@ SetupPowershell
 SetupWindowsTerminal
 SetupVim
 SetupMSVisualStudioCode
-SetupStartupDirectorySetupStartupDirectory
+SetupStartupDirectory
 
 # Manual configuration:
 #   GoogleDrive
