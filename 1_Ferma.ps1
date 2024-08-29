@@ -81,6 +81,7 @@ function InstallPackagesWithChoco()
         msiafterburner `
         discord `
     #>
+    choco install --confirm --id cheat cheatengine
     #choco install --confirm --id ****
 }
 #InstallPackagesWithChoco

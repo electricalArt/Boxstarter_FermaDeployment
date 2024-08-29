@@ -85,7 +85,6 @@ function SetupVisualStudio()
 }
 
 
-
 SetupGit
 SetupPowershell
 SetupWindowsTerminal
