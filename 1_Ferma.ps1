@@ -1,10 +1,8 @@
-<#
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
 Update-ExecutionPolicy `
     -Policy "Unrestricted" `
-#>
 
 
 function InstallNewWinget()
@@ -31,8 +29,6 @@ function InstallNewWinget()
         Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
     }
 }
-#InstallNewWinget
-
 function InstallPackagesWithWinget()
 {
     # Environment
@@ -64,8 +60,6 @@ function InstallPackagesWithWinget()
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
 }
-#InstallPackagesWithWinget
-
 function InstallPackagesWithChoco()
 {
     <#
@@ -85,16 +79,12 @@ function InstallPackagesWithChoco()
     choco install --confirm --id cheat cheatengine
     #choco install --confirm --id ****
 }
-#InstallPackagesWithChoco
-
 function InstallPowershellModules()
 {
     Install-Module -Name PSTree
     Install-Module -Name MagicPacket
     Install-Module -Name Recycle
 }
-#InstallPowershellModules
-
 function ChangePathVariable()
 {
     param(
@@ -112,30 +102,34 @@ function ChangeEnvironmentVariables()
     ChangePathVariable -NewEntity "C:\Program Files\Vim\vim91\"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\XMind_Pro_2023_23.05__x64__Ml_ru__Portable\XMind_Pro_2023_23.05__x64__Ml_ru__Portable"
 }
-ChangeEnvironmentVariables
 
-<#
-Set-WindowsExplorerOptions `
-    -EnableShowHiddenFilesFoldersDrives `
-    -EnableShowProtectedOSFiles `
-    -EnableShowFileExtensions `
-    -EnableShowFullPathInTitleBar `
-    -DisableOpenFileExplorerToQuickAccess `
-    -DisableShowRecentFilesInQuickAccess `
-    -DisableShowFrequentFoldersInQuickAccess `
-    -EnableShowRibbon `
-    -EnableSnapAssist `
-
-Set-BoxstarterTaskbarOptions -UnLock 
-Set-BoxstarterTaskbarOptions -Dock "Top"
-Set-BoxstarterTaskbarOptions -MultiMonitorOn 
-Set-BoxstarterTaskbarOptions -DisableSearchBox 
-
-Disable-GameBarTips
-Disable-BingSearch
 
 try
 {
+    InstallNewWinget
+    InstallPackagesWithWinget
+    InstallPackagesWithChoco
+    InstallPowershellModules
+    ChangeEnvironmentVariables
+    
+    Set-WindowsExplorerOptions `
+        -EnableShowHiddenFilesFoldersDrives `
+        -EnableShowProtectedOSFiles `
+        -EnableShowFileExtensions `
+        -EnableShowFullPathInTitleBar `
+        -DisableOpenFileExplorerToQuickAccess `
+        -DisableShowRecentFilesInQuickAccess `
+        -DisableShowFrequentFoldersInQuickAccess `
+        -EnableShowRibbon `
+        -EnableSnapAssist `
+    
+    Set-BoxstarterTaskbarOptions -UnLock 
+    Set-BoxstarterTaskbarOptions -Dock "Top"
+    Set-BoxstarterTaskbarOptions -MultiMonitorOn 
+    Set-BoxstarterTaskbarOptions -DisableSearchBox 
+
+    Disable-GameBarTips
+    Disable-BingSearch
     Install-WindowsUpdate `
         -AcceptEula
 }
@@ -144,6 +138,3 @@ catch
     Write-Error $_
 }
 
-Disable-GameBarTips
-Disable-BingSearch
-#>
