@@ -8,6 +8,7 @@ function New-SymbolicLink {
     )
     try
     {
+        Remove-Item -Path $Path -Force -Recurse
         New-Item -Path $Path -ItemType "SymbolicLink" -Target $Target -Force
     }
     catch
@@ -78,10 +79,16 @@ function SetupStartupDirectory()
 
 function SetupVisualStudio()
 {
+    # Settings
     New-Item -Type "Directory" -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings" -Force
     New-SymbolicLink `
         -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings\CurrentSettings.vssettings" `
         -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\VisualStudio.vssettings"
+    # Templates
+    New-Item -Type "Directory" -Path "$env:HOME\OneDrive\Документы\Visual Studio 2022\" -Force
+    New-SymbolicLink `
+        -Path "C:\Users\musli\OneDrive\Документы\Visual Studio 2022\My Exported Templates\" `
+        -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\My Exported Templates\"
 }
 
 
@@ -91,6 +98,7 @@ SetupWindowsTerminal
 SetupVim
 SetupMSVisualStudioCode
 SetupStartupDirectory
+SetupVisualStudio
 
 # Manual configuration:
 #   GoogleDrive

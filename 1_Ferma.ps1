@@ -1,3 +1,7 @@
+# To start open the following link:
+#   START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
+#
+
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
@@ -13,9 +17,11 @@ function InstallNewWinget()
     [System.Environment]::SetEnvironmentVariable("Path", $env:Path + $wingetPath, [System.EnvironmentVariableTarget]::Machine)
     #>
 
-    #Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
-    #Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
-    #Remove-Item .\winget.msixbundle
+    <#
+    Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
+    Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
+    Remove-Item .\winget.msixbundle
+    #>
 
     if (!(Get-Command "winget" -ErrorAction "SilentlyContinue"))
     {
