@@ -60,6 +60,8 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     winget install --accept-package-agreements --accept-source-agreements --id Google.GoogleDrive
     winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
+    winget install --accept-package-agreements --accept-source-agreements --id Kitware.CMake
+    winget install --accept-package-agreements --accept-source-agreements --id Ninja-build.Ninja
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
@@ -107,6 +109,7 @@ function ChangeEnvironmentVariables()
 {
     ChangePathVariable -NewEntity "C:\Program Files\Vim\vim91\"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\XMind_Pro_2023_23.05__x64__Ml_ru__Portable\XMind_Pro_2023_23.05__x64__Ml_ru__Portable"
+    ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\vcpkg\"
 }
 
 
