@@ -108,7 +108,7 @@ function ChangePathVariable()
 function ChangeEnvironmentVariables()
 {
     ChangePathVariable -NewEntity "C:\Program Files\Vim\vim91\"
-    ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\XMind_Pro_2023_23.05__x64__Ml_ru__Portable\XMind_Pro_2023_23.05__x64__Ml_ru__Portable"
+    ChangePathVariable -NewEntity "C:\Program Files\XMind"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\vcpkg\"
 }
 
