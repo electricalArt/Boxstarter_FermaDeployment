@@ -62,6 +62,7 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
     winget install --accept-package-agreements --accept-source-agreements --id Kitware.CMake
     winget install --accept-package-agreements --accept-source-agreements --id Ninja-build.Ninja
+    winget install --accept-package-agreements --accept-source-agreements --id Balena.Etcher
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
