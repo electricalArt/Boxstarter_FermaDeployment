@@ -88,12 +88,6 @@ function InstallPackagesWithChoco()
     choco install --confirm --id cheat cheatengine
     #choco install --confirm --id ****
 }
-function InstallPowershellModules()
-{
-    Install-Module -Name PSTree
-    Install-Module -Name MagicPacket
-    Install-Module -Name Recycle
-}
 function ChangePathVariable()
 {
     param(
@@ -119,8 +113,8 @@ try
     InstallNewWinget
     InstallPackagesWithWinget
     InstallPackagesWithChoco
-    InstallPowershellModules
     ChangeEnvironmentVariables
+    ./1.1_InstallPowershellModules.ps1
     
     Set-WindowsExplorerOptions `
         -EnableShowHiddenFilesFoldersDrives `
