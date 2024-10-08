@@ -50,7 +50,6 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id qBittorrent.qBittorrent
     winget install --accept-package-agreements --accept-source-agreements --id Guru3D.Afterburner
     winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
-    winget install --accept-package-agreements --accept-source-agreements --id Discord.Discord
     winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
     winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
     winget install --accept-package-agreements --accept-source-agreements --id VideoLAN.VLC
@@ -71,6 +70,7 @@ function InstallPackagesWithWinget()
         #	AIMP.AIMP `
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
+        #   Discord.Discord
 }
 function InstallPackagesWithChoco()
 {
@@ -89,6 +89,7 @@ function InstallPackagesWithChoco()
     #>
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
+    choco install --confirm --id discord
     #choco install --confirm --id ****
 }
 function ChangePathVariable()
