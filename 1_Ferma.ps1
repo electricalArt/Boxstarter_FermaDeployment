@@ -5,9 +5,6 @@
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
 
-Update-ExecutionPolicy `
-    -Policy "Unrestricted" `
-
 
 function InstallNewWinget()
 {
@@ -125,6 +122,9 @@ try
         -DisableShowFrequentFoldersInQuickAccess `
         -EnableShowRibbon `
         -EnableSnapAssist `
+
+    Update-ExecutionPolicy `
+        -Policy "Unrestricted" `
     
     Set-BoxstarterTaskbarOptions -UnLock 
     Set-BoxstarterTaskbarOptions -Dock "Top"
