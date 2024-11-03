@@ -43,8 +43,16 @@ function InstallVisualStudio()
     winget install --source winget --exact --id Microsoft.WindowsWDK.10.0.26100
     
     # Extensions
-    # ****Should not be used. WDK installed here does not install extension for Visual Studio.
-    #   Install these kits as MSDN instructions say.
+    #   VsVim
+    #   Windows Driver Kit
+    #       Should not be used. WDK installed here does not install extension for Visual Studio.
+    #       Install these kits as MSDN instructions say.
 
 }
+function InstallRelatedStuff()
+{
+    # vcpkg
+}
+
 InstallVisualStudio
+InstallRelatedStuff

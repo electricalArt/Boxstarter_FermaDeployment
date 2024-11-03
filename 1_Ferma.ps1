@@ -11,12 +11,14 @@ Update-ExecutionPolicy `
 
 function InstallNewWinget()
 {
+    # Doesn't work properly
     <#
     choco install winget
     $wingetPath = "C:\Program Files\WindowsApps\Microsoft.DesktopAppInstaller_1.23.1911.0_x64__8wekyb3d8bbwe\"
     [System.Environment]::SetEnvironmentVariable("Path", $env:Path + $wingetPath, [System.EnvironmentVariableTarget]::Machine)
     #>
 
+    # Doesn't work properly
     <#
     Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile winget.msixbundle
     Add-AppPackage -ForceApplicationShutdown .\winget.msixbundle
@@ -63,8 +65,11 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Ninja-build.Ninja
     winget install --accept-package-agreements --accept-source-agreements --id Balena.Etcher
     winget install --accept-package-agreements --accept-source-agreements --id WiresharkFoundation.Wireshark
-        # Needed for Wrieshark
+        # Needed for Wireshark
         winget install --accept-package-agreements --accept-source-agreements --id Insecure.Npcap
+    winget install --accept-package-agreements --accept-source-agreements --id Oracle.JDK.23
+    winget install --accept-package-agreements --accept-source-agreements --id Oracle.JavaRuntimeEnvironment
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowetToys
     #winget install --accept-package-agreements --accept-source-agreements --id ****
     	#### Apps that are not available
         #	AIMP.AIMP `
@@ -74,19 +79,6 @@ function InstallPackagesWithWinget()
 }
 function InstallPackagesWithChoco()
 {
-    <#
-    choco install `
-        vim `
-        microsoft-windows-terminal `
-        powershell-corePowerShell `
-        gsudo `
-        git `
-        winrar `
-        VisualStudioCode `
-        qbittorrent `
-        msiafterburner `
-        discord `
-    #>
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
     choco install --confirm --id discord
