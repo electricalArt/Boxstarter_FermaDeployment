@@ -29,7 +29,7 @@ function InstallNewWinget()
     {
         $progressPreference = 'silentlyContinue'
         Write-BoxstarterMessage `
-            -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Downloading WinGet and its dependencies..."
+            -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Downloading WinGet and its dependencies... (~215 mb, it may take minutes)"
         Invoke-WebRequest -Uri https://aka.ms/getwinget -OutFile Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
         Invoke-WebRequest -Uri https://aka.ms/Microsoft.VCLibs.x64.14.00.Desktop.appx -OutFile Microsoft.VCLibs.x64.14.00.Desktop.appx
         Invoke-WebRequest -Uri https://github.com/microsoft/microsoft-ui-xaml/releases/download/v2.8.6/Microsoft.UI.Xaml.2.8.x64.appx -OutFile Microsoft.UI.Xaml.2.8.x64.appx
@@ -39,7 +39,7 @@ function InstallNewWinget()
     }
 
     Write-BoxstarterMessage `
-        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Hehehe"
+        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Luck!"
 }
 function InstallPackagesWithWinget()
 {
