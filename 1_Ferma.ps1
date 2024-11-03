@@ -3,7 +3,7 @@
 #
 
 Write-BoxstarterMessage `
-    -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START" `
+    -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START"
 
 
 function InstallNewWinget()
@@ -36,6 +36,9 @@ function InstallNewWinget()
         Add-AppxPackage Microsoft.UI.Xaml.2.8.x64.appx
         Add-AppxPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
     }
+
+    Write-BoxstarterMessage `
+        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Hehehe"
 }
 function InstallPackagesWithWinget()
 {
