@@ -11,6 +11,9 @@ Update-ExecutionPolicy `
 
 function InstallNewWinget()
 {
+    Write-BoxstarterMessage `
+        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallNewWinget()" `
+
     # Doesn't work properly
     <#
     choco install winget
