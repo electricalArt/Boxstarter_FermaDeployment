@@ -8,7 +8,7 @@ function New-SymbolicLink {
     )
     try
     {
-        Remove-Item -Path $Path -Force -Recurse
+        Remove-Item -Path $Path -Force -Recurse 2>$null
         New-Item -Path $Path -ItemType "SymbolicLink" -Target $Target -Force
     }
     catch

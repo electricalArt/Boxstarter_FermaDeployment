@@ -58,8 +58,6 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
     winget install --accept-package-agreements --accept-source-agreements --id qBittorrent.qBittorrent
     winget install --accept-package-agreements --accept-source-agreements --id Guru3D.Afterburner
-    winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
-    winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
     winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
     winget install --accept-package-agreements --accept-source-agreements --id VideoLAN.VLC
     winget install --accept-package-agreements --accept-source-agreements --id Python.Python.3.12
@@ -83,11 +81,18 @@ function InstallPackagesWithWinget()
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
         #   Discord.Discord
+
+    # Entertaiment
+    winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
+    winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
 }
 function InstallPackagesWithChoco()
 {
+    # Work
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
+    
+    # Entertaiment
     choco install --confirm --id discord
     #choco install --confirm --id ****
 }

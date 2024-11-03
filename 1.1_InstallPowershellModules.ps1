@@ -2,7 +2,9 @@ function InstallPowershellModules()
 {
     Install-Module -Name PSTree -Confirm
     Install-Module -Name MagicPacket -Confirm
-    Install-Module -Name Recycle -Confirm
+
+    # Not available anymore 
+    #Install-Module -Name Recycle -Confirm
 }
 
 try
