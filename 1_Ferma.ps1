@@ -9,7 +9,7 @@ Write-BoxstarterMessage `
 function InstallNewWinget()
 {
     Write-BoxstarterMessage `
-        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallNewWinget()" `
+        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallNewWinget()"
 
     # Doesn't work properly
     <#
@@ -39,6 +39,9 @@ function InstallNewWinget()
 }
 function InstallPackagesWithWinget()
 {
+    Write-BoxstarterMessage `
+        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallPackagesWithWinget()"
+
     # Environment
     winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
