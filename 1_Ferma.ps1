@@ -1,4 +1,4 @@
-# To start open the following link:
+# To start open the following link (type it to powershell as it is):
 #   START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
 #
 
