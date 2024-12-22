@@ -50,22 +50,23 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
     winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
-    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.WindowsTerminal
-    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.Powershell
+    winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
+    winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
+    #winget install --accept-package-agreements --accept-source-agreements --id Microsoft.WindowsTerminal
+    #winget install --accept-package-agreements --accept-source-agreements --id Microsoft.Powershell    
+        # Already installed in the dedicated function
     winget install --accept-package-agreements --accept-source-agreements --id Git.Git
     winget install --accept-package-agreements --accept-source-agreements --id RARLab.WinRAR
-    winget install --accept-package-agreements --accept-source-agreements --id AnydeskSoftwareGmbH.AnyDesk
+    #winget install --accept-package-agreements --accept-source-agreements --id AnydeskSoftwareGmbH.AnyDesk
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudioCode
     winget install --accept-package-agreements --accept-source-agreements --id qBittorrent.qBittorrent
     winget install --accept-package-agreements --accept-source-agreements --id Guru3D.Afterburner
-    winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
+    #winget install --accept-package-agreements --accept-source-agreements --id Brave.Brave
     winget install --accept-package-agreements --accept-source-agreements --id VideoLAN.VLC
     winget install --accept-package-agreements --accept-source-agreements --id Python.Python.3.12
-    winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
+   # winget install --accept-package-agreements --accept-source-agreements --id AutoHotkey.AutoHotkey
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
-    winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     winget install --accept-package-agreements --accept-source-agreements --id Google.GoogleDrive
-    winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
     winget install --accept-package-agreements --accept-source-agreements --id Kitware.CMake
     winget install --accept-package-agreements --accept-source-agreements --id Ninja-build.Ninja
     winget install --accept-package-agreements --accept-source-agreements --id Balena.Etcher
@@ -84,7 +85,7 @@ function InstallPackagesWithWinget()
 
     # Entertaiment
     winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
-    winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
+    #winget install --accept-package-agreements --accept-source-agreements --id Yandex.Music
 }
 function InstallPackagesWithChoco()
 {
