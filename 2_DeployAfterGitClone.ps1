@@ -59,7 +59,7 @@ function SetupMSVisualStudioCode()
     New-Item -Type "Directory" -Path "$env:APPDATA\Highresolution Enterprises\XMouseButtonControl\" -Force
     New-SymbolicLink `
         -Path "$env:APPDATA/Highresolution Enterprises/XMouseButtonControl/musli''s XMBC Profile.xmbcp" `
-        -Target 'C:/Users/musli/ArtHome/.config/musli''s XMBC Profile.xmbcp'
+        -Target 'C:/Users/musli/ArtHome/.config/_Windows/musli''s XMBC Profile.xmbcp'
 }
 
 function SetupStartupDirectory()

@@ -92,10 +92,13 @@ function InstallPackagesWithChoco()
     # Work
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
+    choco install --confirm --id vmwareworkstation
     
     # Entertaiment
     choco install --confirm --id discord
     #choco install --confirm --id ****
+
+
 }
 function ChangePathVariable()
 {
