@@ -36,7 +36,7 @@ $VSConfigPath = "$env:TEMP\VSConfig.json"
 
 function InstallVisualStudio()
 {
-    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2022.Community `
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.VisualStudio.2019.Community `
         --override "--passive --config $VSConfigPath"
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.DotNet.SDK.8
     winget install --source winget --exact --id Microsoft.WindowsSDK.10.0.26100

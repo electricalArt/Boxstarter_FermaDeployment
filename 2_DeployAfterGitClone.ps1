@@ -85,10 +85,15 @@ function SetupVisualStudio()
         -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings\CurrentSettings.vssettings" `
         -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\VisualStudio.vssettings"
     # Templates
-    New-Item -Type "Directory" -Path "$env:HOME\OneDrive\Документы\Visual Studio 2022\" -Force
+    New-Item -Type "Directory" -Path "$env:HOMEPATH\OneDrive\Документы\Visual Studio 2022\" -Force
     New-SymbolicLink `
         -Path "C:\Users\musli\OneDrive\Документы\Visual Studio 2022\My Exported Templates\" `
         -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\My Exported Templates\"
+}
+
+function SetupMiscellaneous()
+{
+    New-Item -Type "Directory" -Path "$env:HOMEPATH\ArtHome\Projects" -Force
 }
 
 
@@ -99,6 +104,7 @@ SetupVim
 SetupMSVisualStudioCode
 SetupStartupDirectory
 SetupVisualStudio
+SetupMiscellaneous
 
 # Manual configuration:
 #   GoogleDrive

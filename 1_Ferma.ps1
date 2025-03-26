@@ -47,7 +47,8 @@ function InstallPackagesWithWinget()
         -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallPackagesWithWinget()"
 
     # Environment
-    winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
+    #winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
+    #   # Now sudo is built in Windows 11
     winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
     winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
@@ -73,7 +74,8 @@ function InstallPackagesWithWinget()
     winget install --accept-package-agreements --accept-source-agreements --id WiresharkFoundation.Wireshark
         # Needed for Wireshark
         winget install --accept-package-agreements --accept-source-agreements --id Insecure.Npcap
-    winget install --accept-package-agreements --accept-source-agreements --id Oracle.JDK.23
+    #winget install --accept-package-agreements --accept-source-agreements --id Oracle.JDK.23
+    #   # Why should you install exactly version 23?
     winget install --accept-package-agreements --accept-source-agreements --id Oracle.JavaRuntimeEnvironment
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowetToys
     #winget install --accept-package-agreements --accept-source-agreements --id ****
@@ -82,6 +84,7 @@ function InstallPackagesWithWinget()
         #	Foxit.FoxitReader `
         #	Parsec.Parsec `
         #   Discord.Discord
+    winget install --accept-package-agreements --accept-source-agreements --id Insecure.Nmap
 
     # Entertaiment
     winget install --accept-package-agreements --accept-source-agreements --id Valve.Steam
