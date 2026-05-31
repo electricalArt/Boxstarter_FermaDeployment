@@ -23,12 +23,12 @@ $Startup = "$env:APPDATA\Microsoft\Windows\Start Menu\Programs\Startup\"
 
 function SetupGit()
 {
-    New-SymbolicLink -Path "$env:HOMEPATH\.gitconfig" -Target "$env:HOMEPATH\ArtHome\.gitconfig"
+    New-SymbolicLink -Path "\.gitconfig" -Target "\ArtHome\.gitconfig"
 }
 
 function SetupPowershell()
 {
-    New-Item -Type "Directory" ~\Documents\Powershell\ -Force
+    New-Item -Type "Directory" $env:HOMEPATH\Documents\Powershell\ -Force
     New-SymbolicLink `
         -Path $PROFILE.CurrentUserAllHosts `
         -Target "C:/Users/musli/ArtHome/.config/powershell/profile.ps1" 
@@ -85,15 +85,14 @@ function SetupVisualStudio()
         -Path "$env:LOCALAPPDATA\Microsoft\VisualStudio\17.0_fde06190\Settings\CurrentSettings.vssettings" `
         -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\VisualStudio.vssettings"
     # Templates
-    New-Item -Type "Directory" -Path "$env:HOMEPATH\OneDrive\Документы\Visual Studio 2022\" -Force
-    New-SymbolicLink `
-        -Path "C:\Users\musli\OneDrive\Документы\Visual Studio 2022\My Exported Templates\" `
-        -Target "C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\My Exported Templates\"
+    #New-Item -Type "Directory" -Path "$env:HOMEPATH\OneDrive\Документы\Visual Studio 2022\" -Force
+    #New-SymbolicLink `
+    #    -Path 'C:\Users\musli\OneDrive\Документы\Visual Studio 2022\My Exported Templates\' `
+    #    -Target 'C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\My Exported Templates\'
 }
 
-function SetupMiscellaneous()
-{
-    New-Item -Type "Directory" -Path "$env:HOMEPATH\ArtHome\Projects" -Force
+function SetupMiscellaneous {
+    New-Item -Type 'Directory' -Path "$env:HOMEPATH\ArtHome\Projects" -Force 
 }
 
 
