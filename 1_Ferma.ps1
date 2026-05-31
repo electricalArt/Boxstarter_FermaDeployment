@@ -56,6 +56,7 @@ function InstallPackagesWithWinget()
     # Environment
     #winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     #   # Now sudo is built in Windows 11
+    winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
     winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
     winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
