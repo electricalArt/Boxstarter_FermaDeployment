@@ -7,7 +7,7 @@
 #   git clone https://github.com/electricalArt/Boxstarter_FermaDeployment.git
 #   cd ./Boxstarter_FermaDeploymentt
 #   Set-ExecutionPolicy RemoteSigned
-#   .\1_Ferma.ps1  # Should be opened using Microsoft Edge
+#   .\1_Ferma.ps1
 
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START"
