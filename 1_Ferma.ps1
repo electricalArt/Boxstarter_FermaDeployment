@@ -1,10 +1,13 @@
 # To start open the following link (type it to powershell as it is)(maybe need to call twice, second one after reboot, 22.12dec.2024):
 #   ****(doesn't work anymore) START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
 #   _Or:
+#   winget install chocolatey.chocolatey
+#   choco install --yes git
 #   cd ~/Downloads/
 #   git clone https://github.com/electricalArt/Boxstarter_FermaDeployment.git
-#   cd ./Boxstarter_FermaDeployment/
-#   START https://boxstarter.org/package/nr/url?c:\users\musli\downloads\Boxstarter_FermaDeployment\1_Ferma.ps1  # Should be opened using Microsoft Edge
+#   cd ./Boxstarter_FermaDeploymentt
+#   Set-ExecutionPolicy RemoteSigned
+#   .\1_Ferma.ps1  # Should be opened using Microsoft Edge
 
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START"
