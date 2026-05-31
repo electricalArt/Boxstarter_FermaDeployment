@@ -102,6 +102,7 @@ function InstallPackagesWithChoco()
 {
     # Environment
     choco install --confirm --id pwsh
+    choco install --confirm --id googledrive
 
     # Work
     choco install --confirm --id cheat x64dbg.portable
