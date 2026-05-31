@@ -2,8 +2,9 @@
 #   ****(doesn't work anymore) START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
 #   _Or:
 #   cd ~/Downloads/
-#   curl.exe https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1 > 1_Ferma.ps1
-#   START https://boxstarter.org/package/nr/url?c:\users\musli\downloads\1_Ferma.ps1  # Should be opened using Microsoft Edge
+#   git clone https://github.com/electricalArt/Boxstarter_FermaDeployment.git
+#   cd ./Boxstarter_FermaDeployment/
+#   START https://boxstarter.org/package/nr/url?c:\users\musli\downloads\Boxstarter_FermaDeployment\1_Ferma.ps1  # Should be opened using Microsoft Edge
 
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START"
