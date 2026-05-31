@@ -100,6 +100,9 @@ function InstallPackagesWithWinget()
 }
 function InstallPackagesWithChoco()
 {
+    # Environment
+    choco install --confirm --id pwsh
+
     # Work
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
