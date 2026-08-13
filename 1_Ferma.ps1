@@ -1,8 +1,8 @@
-# To start open the following link (type it to powershell as it is)(maybe need
-# to call twice, second one after reboot, 22.12dec.2024):
+# To start, perform (type it to powershell as it is)(maybe need
+# to call twice, the second one (****after reboot) with VPN):
 # * _OR
 #   ```powershell
-#   START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
+#   Start-Process msedge -ArgumentList "https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1"
 #   ```
 # * _OR
 #   ```powershell
@@ -250,9 +250,9 @@ try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
-    #InstallNewWinget
-    ##_InstallPackagesWithWinget
-    #InstallPackagesWithChoco
+    InstallNewWinget
+    #_InstallPackagesWithWinget
+    InstallPackagesWithChoco
     InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
