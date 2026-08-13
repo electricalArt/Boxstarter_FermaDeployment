@@ -248,6 +248,30 @@ function InstallPackagesWithPython()
     python3.12.exe -m pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
     python3.12.exe -m pip install --break-system-packages scapy
 }
+function InstallOpenSSHServer()
+{
+    Write-Output "[InstallOpenSSHServer]"
+
+    # Install the OpenSSH Server
+    Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+    
+    # Start the sshd service
+    Start-Service sshd
+    
+    # OPTIONAL but recommended:
+    Set-Service -Name sshd -StartupType 'Automatic'
+    
+    # Confirm the Firewall rule is configured. It should be created
+    # automatically by setup. Run the following to verify
+    if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue)) {
+        Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
+        New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' `
+            -DisplayName 'OpenSSH Server (sshd)' -Enabled True `
+            -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+    } else {
+        Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
+    }
+}
 function InstallCyberChef()
 {
     Write-Output "[InstallCyberChef]"
@@ -267,33 +291,34 @@ try {
     InstallHiddify
     InstallXmind
     InstallMicrosoftOffice
+    InstallOpenSSHServer
     InstallCyberChef
  
-    Set-WindowsExplorerOptions `
-        -EnableShowHiddenFilesFoldersDrives `
-        -EnableShowProtectedOSFiles `
-        -EnableShowFileExtensions `
-        -EnableShowFullPathInTitleBar `
-        -DisableOpenFileExplorerToQuickAccess `
-        -DisableShowRecentFilesInQuickAccess `
-        -DisableShowFrequentFoldersInQuickAccess `
-        -EnableShowRibbon `
-        -EnableSnapAssist `
+    #Set-WindowsExplorerOptions `
+    #    -EnableShowHiddenFilesFoldersDrives `
+    #    -EnableShowProtectedOSFiles `
+    #    -EnableShowFileExtensions `
+    #    -EnableShowFullPathInTitleBar `
+    #    -DisableOpenFileExplorerToQuickAccess `
+    #    -DisableShowRecentFilesInQuickAccess `
+    #    -DisableShowFrequentFoldersInQuickAccess `
+    #    -EnableShowRibbon `
+    #    -EnableSnapAssist `
 
     Update-ExecutionPolicy `
         -Policy "Unrestricted" `
     
-    Set-BoxstarterTaskbarOptions -UnLock 
-    Set-BoxstarterTaskbarOptions -Dock "Top"
-    Set-BoxstarterTaskbarOptions -MultiMonitorOn 
-    Set-BoxstarterTaskbarOptions -DisableSearchBox 
+    #Set-BoxstarterTaskbarOptions -UnLock 
+    #Set-BoxstarterTaskbarOptions -Dock "Top"
+    #Set-BoxstarterTaskbarOptions -MultiMonitorOn 
+    #Set-BoxstarterTaskbarOptions -DisableSearchBox 
 
     Write-Output "[Boxstarter_FermaDeploment] Finished."
 
-    Disable-GameBarTips
-    Disable-BingSearch
-    Install-WindowsUpdate `
-        -AcceptEula
+    #Disable-GameBarTips
+    #Disable-BingSearch
+    #Install-WindowsUpdate `
+    #    -AcceptEula
 }
 catch 
 {
