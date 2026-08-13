@@ -91,6 +91,22 @@ function SetupVisualStudio()
     #    -Target 'C:\Users\musli\ArtHome\.config\_Windows\VisualStudio\My Exported Templates\'
 }
 
+function SetupKeymapper()
+{
+    New-Item -ItemType "symboliclink" `
+        -Target "$env:HOMEPATH\ArtHome\.config\keymapper.conf" `
+        -Path $env:HOMEPATH/keymapper.conf
+}
+
+function SetupIdaPro7_7()
+{
+    $IDAPro7_7 = "$env:HOMEPATH\AppData\Local\Programs\IDA Pro 7.7.220118 (Windows) (x86,x64,ARM64)\"
+    if (Test-Path -Path $IDAPro7_7) {
+        Copy-Item -Recurse "$env:HOMEPATH\ArtHome\.config\IDA Pro 7.7, Config\" `
+            $IDAPro7_7
+    }
+}
+
 function SetupMiscellaneous {
     New-Item -Type 'Directory' -Path "$env:HOMEPATH\ArtHome\Projects" -Force 
 }
@@ -103,6 +119,7 @@ SetupVim
 SetupMSVisualStudioCode
 SetupStartupDirectory
 SetupVisualStudio
+SetupKeymapper
 SetupMiscellaneous
 
 # Manual configuration:

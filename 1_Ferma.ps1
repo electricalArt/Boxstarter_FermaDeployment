@@ -119,30 +119,37 @@ function InstallPackagesWithChoco()
     choco install --confirm --id exiftool
     choco install --confirm --id vmwareworkstation
     choco install --confirm --id openssh
+    choco install --confirm --id openssl
     choco install --confirm --id systeminformer
     choco install --confirm --id powertoys
     choco install --confirm --id firefox
+    choco install --confirm --id brave
+    choco install --confirm --id googlechrome
     choco install --confirm --id git
     choco install --confirm --id winrar
     choco install --confirm --id qbittorrent
-    choco install --confirm --id brave
-    choco install --confirm --id python3.12
+    choco install --confirm --id python39
+        # Need for some program (e. g. IDA Pro 7.7)
+    choco install --confirm --id python312
     choco install --confirm --id autohotkey
     choco install --confirm --id googledrive
     choco install --confirm --id etcher # Balena Etcher
     choco install --confirm --id wireshark
         # ****Probably for WireShark you need to install npcap 
     choco install --confirm --id nmap
+    choco install --confirm --id mitmproxy
+    choco install --confirm --id keymapper
 
     # Production stuff
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
     choco install --confirm --id dotnet-10.0-sdk
+    choco install --confirm --id microsoft-openjdk-21
+    choco install --confirm --id golang
     choco install --confirm --id opencl-intel-cpu-runtime
     choco install --confirm --id hashcat
     choco install --confirm --id hxd
     choco install --confirm --id vscodium
-    choco install --confirm --id microsoft-openjdk-21
     
     # Entertaiment
     choco install --confirm --id vlc
@@ -172,13 +179,6 @@ function ChangeEnvironmentVariables()
     ChangePathVariable -NewEntity "C:\Program Files\XMind"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\vcpkg\"
 }
-function InstallHiddify()
-{
-    Invoke-WebRequest https://github.com/hiddify/hiddify-app/releases/download/v2.0.5/Hiddify-Windows-Setup-x64.exe `
-        -OutFile $env:TMP/Hiddify-Windows-Setup-x64.exe
-    # **** Didn't test
-    . "$env:TMP/Hiddify-Windows-Setup-x64.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
-}
 function InstallPowershellModules()
 {
     # To skip confirmation (****didn't tested)
@@ -191,19 +191,53 @@ function InstallPowershellModules()
     # Not available anymore
     #Install-Module -Name Recycle -Confirm
 }
-
-try
+function InstallHiddify()
 {
+    Invoke-WebRequest https://github.com/hiddify/hiddify-app/releases/download/v2.0.5/Hiddify-Windows-Setup-x64.exe `
+        -OutFile $env:TMP/Hiddify-Windows-Setup-x64.exe
+    . "$env:TMP/Hiddify-Windows-Setup-x64.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
+}
+function InstallXmind()
+{
+    Invoke-WebRequest https://dl3.xmind.app/Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe `
+        -OutFile Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe
+    ./Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe
+
+    # Block Outbound, Xmind
+    New-NetFirewallRule -DisplayName "Block Outbound, Xmind" `
+        -Direction Outbound `
+        -Program (Resolve-Path "~\AppData\Local\Programs\Xmind\Xmind.exe")  `
+        -Action Block
+}
+function InstallMicrosoftOffice()
+{
+    choco install --confirm --id microsoft-office-deployment
+        # Microsoft Office 2016 Pro Plus (not activated)
+
+    # Activation
+    Invoke-RestMethod https://get.activated.win | Invoke-Expression 
+        # After launching script, select option [2] Ohook -> [3] Download Office
+}
+function InstallPackagesWithPython()
+{
+    pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
+    pip install --break-system-packages scapy
+}
+
+try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
     InstallNewWinget
     #_InstallPackagesWithWinget
     InstallPackagesWithChoco
+    InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
     InstallHiddify
-    
+    InstallXmind
+    InstallMicrosoftOffice
+ 
     Set-WindowsExplorerOptions `
         -EnableShowHiddenFilesFoldersDrives `
         -EnableShowProtectedOSFiles `
