@@ -234,17 +234,17 @@ function InstallMicrosoftOffice()
 }
 function InstallPackagesWithPython()
 {
-    python312 -m pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
-    python312 -m pip install --break-system-packages scapy
+    python3.12.exe -m pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
+    python3.12.exe -m pip install --break-system-packages scapy
 }
 
 try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
-    InstallNewWinget
-    #_InstallPackagesWithWinget
-    InstallPackagesWithChoco
+    #InstallNewWinget
+    ##_InstallPackagesWithWinget
+    #InstallPackagesWithChoco
     InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
