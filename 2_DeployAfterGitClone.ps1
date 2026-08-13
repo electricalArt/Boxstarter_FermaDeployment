@@ -93,7 +93,8 @@ function SetupVisualStudio()
 
 function SetupKeymapper()
 {
-    New-Item -ItemType "symboliclink" `
+    Write-Output "[Keymapper] Performing setup..."
+    New-Item -ItemType "SymbolicLink" `
         -Target "$env:HOMEPATH\ArtHome\.config\keymapper.conf" `
         -Path $env:HOMEPATH/keymapper.conf
 }
@@ -102,7 +103,7 @@ function SetupIdaPro7_7()
 {
     $IDAPro7_7 = "$env:HOMEPATH\AppData\Local\Programs\IDA Pro 7.7.220118 (Windows) (x86,x64,ARM64)\"
     if (Test-Path -Path $IDAPro7_7) {
-        Write-Output "IDA Pro 7.7 is found. Performing setup..."
+        Write-Output "[IDA Pro 7.7] Installation is found. Performing setup..."
         Copy-Item -Recurse "$env:HOMEPATH\ArtHome\.config\IDA Pro 7.7, Config\" `
             $IDAPro7_7
     }
