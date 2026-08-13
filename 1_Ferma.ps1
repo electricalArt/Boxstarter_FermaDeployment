@@ -21,6 +21,8 @@ Write-BoxstarterMessage `
 
 function InstallNewWinget()
 {
+    # The winget has critical problems, see XMind
+
     Write-BoxstarterMessage `
         -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallNewWinget()"
 
@@ -54,17 +56,20 @@ function InstallNewWinget()
     Write-BoxstarterMessage `
         -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Luck!"
 }
-function InstallPackagesWithWinget()
+
+# The function is deprecated. Now you use Choco for everything. Winget has
+# critical problem, see XMind
+function _InstallPackagesWithWinget()
 {
-    Write-BoxstarterMessage `
+        Write-BoxstarterMessage `
         -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallPackagesWithWinget()"
 
     # Environment
     #winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     #   # Now sudo is built in Windows 11
-    winget install --accept-package-agreements --accept-source-agreements --id Hiddify.Next
-    winget install --accept-package-agreements --accept-source-agreements --id Chocolatey.Chocolatey
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
+    winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
+    winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
     #winget install --accept-package-agreements --accept-source-agreements --id Microsoft.WindowsTerminal
@@ -115,6 +120,19 @@ function InstallPackagesWithChoco()
     choco install --confirm --id vmwareworkstation
     choco install --confirm --id openssh
     choco install --confirm --id systeminformer
+    choco install --confirm --id powertoys
+    choco install --confirm --id firefox
+    choco install --confirm --id git
+    choco install --confirm --id winrar
+    choco install --confirm --id qbittorrent
+    choco install --confirm --id brave
+    choco install --confirm --id python3.12
+    choco install --confirm --id autohotkey
+    choco install --confirm --id googledrive
+    choco install --confirm --id etcher # Balena Etcher
+    choco install --confirm --id wireshark
+        # ****Probably for WireShark you need to install npcap 
+    choco install --confirm --id nmap
 
     # Production stuff
     choco install --confirm --id cheat x64dbg.portable
@@ -124,9 +142,14 @@ function InstallPackagesWithChoco()
     choco install --confirm --id hashcat
     choco install --confirm --id hxd
     choco install --confirm --id vscodium
+    choco install --confirm --id microsoft-openjdk-21
     
     # Entertaiment
+    choco install --confirm --id vlc
     choco install --confirm --id discord
+    choco install --confirm --id make
+    choco install --confirm --id cmake
+    choco install --confirm --id ninja
     #choco install --confirm --id ****
 
 
@@ -149,15 +172,37 @@ function ChangeEnvironmentVariables()
     ChangePathVariable -NewEntity "C:\Program Files\XMind"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\vcpkg\"
 }
+function InstallHiddify()
+{
+    Invoke-WebRequest https://github.com/hiddify/hiddify-app/releases/download/v2.0.5/Hiddify-Windows-Setup-x64.exe `
+        -OutFile $env:TMP/Hiddify-Windows-Setup-x64.exe
+    # **** Didn't test
+    . "$env:TMP/Hiddify-Windows-Setup-x64.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
+}
+function InstallPowershellModules()
+{
+    # To skip confirmation (****didn't tested)
+    Install-PackageProvider NuGet -Force
+    Set-PSRepository PSGallery -InstallationPolicy Trusted
 
+    Install-Module -Name PSTree -Confirm
+    Install-Module -Name MagicPacket -Confirm
+
+    # Not available anymore
+    #Install-Module -Name Recycle -Confirm
+}
 
 try
 {
+    # ****It seems that if you run the script using Boxstarter URL, choco is
+    #   installed by it
+
     InstallNewWinget
-    InstallPackagesWithWinget
+    #_InstallPackagesWithWinget
     InstallPackagesWithChoco
     ChangeEnvironmentVariables
-    ./1.1_InstallPowershellModules.ps1
+    InstallPowershellModules
+    InstallHiddify
     
     Set-WindowsExplorerOptions `
         -EnableShowHiddenFilesFoldersDrives `
