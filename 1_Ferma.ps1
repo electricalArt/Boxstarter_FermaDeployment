@@ -180,6 +180,7 @@ function ChangeEnvironmentVariables()
     ChangePathVariable -NewEntity "C:\Program Files\XMind"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\vcpkg\"
     ChangePathVariable -NewEntity "C:\Users\musli\AppData\Local\Programs\IDA Pro 7.7.220118 (Windows) (x86,x64,ARM64)\"
+    ChangePathVariable -NewEntity "C:\Program Files\HxD\"
 }
 function InstallPowershellModules()
 {
