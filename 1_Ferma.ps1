@@ -194,12 +194,21 @@ function InstallPowershellModules()
 }
 function InstallHiddify()
 {
+    if (Test-Path -Path "C:\Program Files\Hiddify\Hiddify.exe") {
+        Write-Output "[InstallHiddify] It is already installed. Skip."
+        return
+    }
     Invoke-WebRequest https://github.com/hiddify/hiddify-app/releases/download/v2.0.5/Hiddify-Windows-Setup-x64.exe `
         -OutFile $env:TMP/Hiddify-Windows-Setup-x64.exe
     . "$env:TMP/Hiddify-Windows-Setup-x64.exe" /VERYSILENT /SUPPRESSMSGBOXES /NORESTART
 }
 function InstallXmind()
 {
+    if (Test-Path -Path "~\AppData\Local\Programs\Xmind\Xmind.exe") {
+        Write-Output "[InstallXmind] It is already installed. Skip."
+        return
+    }
+     
     Invoke-WebRequest https://dl3.xmind.app/Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe `
         -OutFile Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe
     ./Xmind-for-Windows-x64bit-24.10.01101-202410202317.exe
@@ -212,6 +221,10 @@ function InstallXmind()
 }
 function InstallMicrosoftOffice()
 {
+    if (Test-Path -Path "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE") {
+        Write-Output "[InstallMicrosoftOffice] It is already installed. Skip."
+        return
+    }
     choco install --confirm --id microsoft-office-deployment
         # Microsoft Office 2016 Pro Plus (not activated)
 
@@ -221,8 +234,8 @@ function InstallMicrosoftOffice()
 }
 function InstallPackagesWithPython()
 {
-    pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
-    pip install --break-system-packages scapy
+    python312 -m pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
+    python312 -m pip install --break-system-packages scapy
 }
 
 try {
@@ -263,7 +276,7 @@ try {
     Install-WindowsUpdate `
         -AcceptEula
 
-    Write-Output "[Boxstarter_FermaDeploment] Finished"
+    Write-Output "[Boxstarter_FermaDeploment] Finished."
 }
 catch 
 {
