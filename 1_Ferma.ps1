@@ -21,10 +21,9 @@ Write-BoxstarterMessage `
 
 function InstallNewWinget()
 {
-    # The winget has critical problems, see XMind
+    Write-Output "[InstallNewWinget]"
 
-    Write-BoxstarterMessage `
-        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallNewWinget()"
+    # The winget has critical problems, see XMind
 
     # Doesn't work properly
     <#
@@ -61,8 +60,7 @@ function InstallNewWinget()
 # critical problem, see XMind
 function _InstallPackagesWithWinget()
 {
-        Write-BoxstarterMessage `
-        -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>InstallPackagesWithWinget()"
+    Write-Output "[InstallPackagesWithWinget]"
 
     # Environment
     #winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
@@ -111,6 +109,8 @@ function _InstallPackagesWithWinget()
 }
 function InstallPackagesWithChoco()
 {
+    Write-Output "[InstallPackagesWithChoco]"
+
     # Environment
     choco install --confirm --id alacritty
     choco install --confirm --id vim
@@ -165,6 +165,7 @@ function InstallPackagesWithChoco()
 }
 function ChangePathVariable()
 {
+    Write-Output "[ChangePathVariable]"
     param(
         [string]$NewEntity
     )
@@ -185,6 +186,8 @@ function ChangeEnvironmentVariables()
 }
 function InstallPowershellModules()
 {
+    Write-Output "[InstallPowershellModules]"
+
     # To skip confirmation (****didn't tested)
     Install-PackageProvider NuGet -Force
     Set-PSRepository PSGallery -InstallationPolicy Trusted
@@ -197,6 +200,7 @@ function InstallPowershellModules()
 }
 function InstallHiddify()
 {
+    Write-Output "[InstallHiddify]"
     if (Test-Path -Path "C:\Program Files\Hiddify\Hiddify.exe") {
         Write-Output "[InstallHiddify] It is already installed. Skip."
         return
@@ -207,6 +211,7 @@ function InstallHiddify()
 }
 function InstallXmind()
 {
+    Write-Output "[InstallXmind]"
     if (Test-Path -Path "~\AppData\Local\Programs\Xmind\Xmind.exe") {
         Write-Output "[InstallXmind] It is already installed. Skip."
         return
