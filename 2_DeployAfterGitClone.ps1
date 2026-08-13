@@ -102,6 +102,7 @@ function SetupIdaPro7_7()
 {
     $IDAPro7_7 = "$env:HOMEPATH\AppData\Local\Programs\IDA Pro 7.7.220118 (Windows) (x86,x64,ARM64)\"
     if (Test-Path -Path $IDAPro7_7) {
+        Write-Output "IDA Pro 7.7 is found. Performing setup..."
         Copy-Item -Recurse "$env:HOMEPATH\ArtHome\.config\IDA Pro 7.7, Config\" `
             $IDAPro7_7
     }
@@ -120,6 +121,7 @@ SetupMSVisualStudioCode
 SetupStartupDirectory
 SetupVisualStudio
 SetupKeymapper
+SetupIdaPro7_7
 SetupMiscellaneous
 
 # Manual configuration:
