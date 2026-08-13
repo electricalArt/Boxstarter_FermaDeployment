@@ -252,9 +252,9 @@ try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
-    InstallNewWinget
-    #_InstallPackagesWithWinget
-    InstallPackagesWithChoco
+    #InstallNewWinget
+    ##_InstallPackagesWithWinget
+    #InstallPackagesWithChoco
     InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
