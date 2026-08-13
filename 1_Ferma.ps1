@@ -262,6 +262,8 @@ try {
     Disable-BingSearch
     Install-WindowsUpdate `
         -AcceptEula
+
+    Write-Output "[Boxstarter_FermaDeploment] Finished"
 }
 catch 
 {
