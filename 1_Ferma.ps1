@@ -139,6 +139,7 @@ function InstallPackagesWithChoco()
     choco install --confirm --id nmap
     choco install --confirm --id mitmproxy
     choco install --confirm --id keymapper
+    choco install --confirm --id docker-desktop
 
     # Production stuff
     choco install --confirm --id cheat x64dbg.portable
@@ -221,6 +222,7 @@ function InstallXmind()
 }
 function InstallMicrosoftOffice()
 {
+    Write-Output "[InstallMicrosoftOffice]"
     if (Test-Path -Path "C:\Program Files (x86)\Microsoft Office\root\Office16\WINWORD.EXE") {
         Write-Output "[InstallMicrosoftOffice] It is already installed. Skip."
         return
@@ -234,8 +236,14 @@ function InstallMicrosoftOffice()
 }
 function InstallPackagesWithPython()
 {
+    Write-Output "[InstallPackagesWithPython]"
     python3.12.exe -m pip install --break-system-packages frida-tools==14.8.1 frida==17.9.6
     python3.12.exe -m pip install --break-system-packages scapy
+}
+function InstallCyberChef()
+{
+    Write-Output "[InstallCyberChef]"
+    docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest
 }
 
 try {
@@ -251,6 +259,7 @@ try {
     InstallHiddify
     InstallXmind
     InstallMicrosoftOffice
+    InstallCyberChef
  
     Set-WindowsExplorerOptions `
         -EnableShowHiddenFilesFoldersDrives `
