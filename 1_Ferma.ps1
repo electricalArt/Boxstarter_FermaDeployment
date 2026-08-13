@@ -139,6 +139,7 @@ function InstallPackagesWithChoco()
     choco install --confirm --id nmap
     choco install --confirm --id mitmproxy
     choco install --confirm --id keymapper
+    choco install --confirm --id docker
     choco install --confirm --id docker-desktop
 
     # Production stuff
@@ -281,12 +282,12 @@ try {
     Set-BoxstarterTaskbarOptions -MultiMonitorOn 
     Set-BoxstarterTaskbarOptions -DisableSearchBox 
 
+    Write-Output "[Boxstarter_FermaDeploment] Finished."
+
     Disable-GameBarTips
     Disable-BingSearch
     Install-WindowsUpdate `
         -AcceptEula
-
-    Write-Output "[Boxstarter_FermaDeploment] Finished."
 }
 catch 
 {
