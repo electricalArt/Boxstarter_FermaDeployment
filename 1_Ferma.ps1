@@ -139,8 +139,6 @@ function InstallPackagesWithChoco()
     choco install --confirm --id nmap
     choco install --confirm --id mitmproxy
     choco install --confirm --id keymapper
-    choco install --confirm --id docker
-    choco install --confirm --id docker-desktop
 
     # Production stuff
     choco install --confirm --id cheat x64dbg.portable
@@ -272,53 +270,47 @@ function InstallOpenSSHServer()
         Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
     }
 }
-function InstallCyberChef()
-{
-    Write-Output "[InstallCyberChef]"
-    docker run -it -p 8080:8080 ghcr.io/gchq/cyberchef:latest
-}
 
 try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
-    #InstallNewWinget
-    ##_InstallPackagesWithWinget
-    #InstallPackagesWithChoco
-    #InstallPackagesWithPython
+    InstallNewWinget
+    #_InstallPackagesWithWinget
+    InstallPackagesWithChoco
+    InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
     InstallHiddify
     InstallXmind
     InstallMicrosoftOffice
     InstallOpenSSHServer
-    InstallCyberChef
  
-    #Set-WindowsExplorerOptions `
-    #    -EnableShowHiddenFilesFoldersDrives `
-    #    -EnableShowProtectedOSFiles `
-    #    -EnableShowFileExtensions `
-    #    -EnableShowFullPathInTitleBar `
-    #    -DisableOpenFileExplorerToQuickAccess `
-    #    -DisableShowRecentFilesInQuickAccess `
-    #    -DisableShowFrequentFoldersInQuickAccess `
-    #    -EnableShowRibbon `
-    #    -EnableSnapAssist `
+    Set-WindowsExplorerOptions `
+        -EnableShowHiddenFilesFoldersDrives `
+        -EnableShowProtectedOSFiles `
+        -EnableShowFileExtensions `
+        -EnableShowFullPathInTitleBar `
+        -DisableOpenFileExplorerToQuickAccess `
+        -DisableShowRecentFilesInQuickAccess `
+        -DisableShowFrequentFoldersInQuickAccess `
+        -EnableShowRibbon `
+        -EnableSnapAssist `
 
     Update-ExecutionPolicy `
         -Policy "Unrestricted" `
     
-    #Set-BoxstarterTaskbarOptions -UnLock 
-    #Set-BoxstarterTaskbarOptions -Dock "Top"
-    #Set-BoxstarterTaskbarOptions -MultiMonitorOn 
-    #Set-BoxstarterTaskbarOptions -DisableSearchBox 
+    Set-BoxstarterTaskbarOptions -UnLock 
+    Set-BoxstarterTaskbarOptions -Dock "Top"
+    Set-BoxstarterTaskbarOptions -MultiMonitorOn 
+    Set-BoxstarterTaskbarOptions -DisableSearchBox 
 
     Write-Output "[Boxstarter_FermaDeploment] Finished."
 
-    #Disable-GameBarTips
-    #Disable-BingSearch
-    #Install-WindowsUpdate `
-    #    -AcceptEula
+    Disable-GameBarTips
+    Disable-BingSearch
+    Install-WindowsUpdate `
+        -AcceptEula
 }
 catch 
 {
