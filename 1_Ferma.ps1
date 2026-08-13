@@ -165,10 +165,11 @@ function InstallPackagesWithChoco()
 }
 function ChangePathVariable()
 {
-    Write-Output "[ChangePathVariable]"
     param(
         [string]$NewEntity
     )
+
+    Write-Output "[ChangePathVariable]"
     $pathVariable = [Environment]::GetEnvironmentVariable("Path", [System.EnvironmentVariableTarget]::User)
     if ($pathVariable.Contains($NewEntity) -eq $false)
     {
@@ -257,10 +258,10 @@ try {
     # ****It seems that if you run the script using Boxstarter URL, choco is
     #   installed by it
 
-    InstallNewWinget
-    #_InstallPackagesWithWinget
-    InstallPackagesWithChoco
-    InstallPackagesWithPython
+    #InstallNewWinget
+    ##_InstallPackagesWithWinget
+    #InstallPackagesWithChoco
+    #InstallPackagesWithPython
     ChangeEnvironmentVariables
     InstallPowershellModules
     InstallHiddify
