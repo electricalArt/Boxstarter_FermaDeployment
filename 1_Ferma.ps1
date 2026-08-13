@@ -1,6 +1,11 @@
-# To start open the following link (type it to powershell as it is)(maybe need to call twice, second one after reboot, 22.12dec.2024):
-#   ****(doesn't work anymore) START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
-#   _Or:
+# To start open the following link (type it to powershell as it is)(maybe need
+# to call twice, second one after reboot, 22.12dec.2024):
+# * _OR
+#   ```powershell
+#   START https://boxstarter.org/package/nr/url?https://raw.githubusercontent.com/elektrikArt/Boxstarter_FermaDeployment/master/1_Ferma.ps1
+#   ```
+# * _OR
+#   ```powershell
 #   winget install chocolatey.chocolatey
 #   choco install --yes git
 #   cd ~/Downloads/
@@ -8,6 +13,7 @@
 #   cd ./Boxstarter_FermaDeploymentt
 #   Set-ExecutionPolicy RemoteSigned
 #   .\1_Ferma.ps1
+#   ```
 
 Write-BoxstarterMessage `
     -Message ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>START"
@@ -56,9 +62,9 @@ function InstallPackagesWithWinget()
     # Environment
     #winget install --accept-package-agreements --accept-source-agreements --id Gerardog.Gsudo
     #   # Now sudo is built in Windows 11
+    winget install --accept-package-agreements --accept-source-agreements --id Hiddify.Next
+    winget install --accept-package-agreements --accept-source-agreements --id Chocolatey.Chocolatey
     winget install --accept-package-agreements --accept-source-agreements --id Microsoft.PowerToys
-    winget install --accept-package-agreements --accept-source-agreements --id Vim.Vim 
-    winget install --accept-package-agreements --accept-source-agreements --id Alacritty.Alacritty
     winget install --accept-package-agreements --accept-source-agreements --id Highresolution.X-MouseButtonControl
     winget install --accept-package-agreements --accept-source-agreements --id Mozilla.Firefox
     #winget install --accept-package-agreements --accept-source-agreements --id Microsoft.WindowsTerminal
@@ -101,13 +107,23 @@ function InstallPackagesWithWinget()
 function InstallPackagesWithChoco()
 {
     # Environment
+    choco install --confirm --id alacritty
+    choco install --confirm --id vim
     choco install --confirm --id pwsh
     choco install --confirm --id googledrive
+    choco install --confirm --id exiftool
+    choco install --confirm --id vmwareworkstation
+    choco install --confirm --id openssh
+    choco install --confirm --id systeminformer
 
-    # Work
+    # Production stuff
     choco install --confirm --id cheat x64dbg.portable
     choco install --confirm --id cheat cheatengine
-    choco install --confirm --id vmwareworkstation
+    choco install --confirm --id dotnet-10.0-sdk
+    choco install --confirm --id opencl-intel-cpu-runtime
+    choco install --confirm --id hashcat
+    choco install --confirm --id hxd
+    choco install --confirm --id vscodium
     
     # Entertaiment
     choco install --confirm --id discord
